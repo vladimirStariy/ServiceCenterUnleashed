@@ -148,9 +148,34 @@ namespace ServiceCenter.Service.Implementations
             }
         }
 
-        public Task<IBaseResponce<Tariff>> Remove(uint id)
+        public async Task<IBaseResponce<Tariff>> Remove(uint id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var model = _tariffRepository.GetById(id).Result;
+                if (model == null)
+                {
+                    return new BaseResponse<Tariff>()
+                    {
+                        Description = "Not found",
+                        StatusCode = StatusCode.OK
+                    };
+                }
+                await _tariffRepository.Delete(model);
+                return new BaseResponse<Tariff>()
+                {
+                    Result = model,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Tariff>()
+                {
+                    Description = $"[GetTariff] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
         }
 
         public async Task<IBaseResponce<Tariff>> Update(TariffViewModel model)

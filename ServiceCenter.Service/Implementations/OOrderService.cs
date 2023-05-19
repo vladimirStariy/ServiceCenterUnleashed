@@ -147,9 +147,34 @@ namespace ServiceCenter.Service.Implementations
             }
         }
 
-        public Task<IBaseResponce<Order>> Remove(uint id)
+        public async Task<IBaseResponce<Order>> Remove(uint id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var model = _orderRepository.GetById(id).Result;
+                if (model == null)
+                {
+                    return new BaseResponse<Order>()
+                    {
+                        Description = "Not found",
+                        StatusCode = StatusCode.OK
+                    };
+                }
+                await _orderRepository.Delete(model);
+                return new BaseResponse<Order>()
+                {
+                    Result = model,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Order>()
+                {
+                    Description = $"[GetOrder] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
         }
 
         public Task<IBaseResponce<Order>> Update(OrderViewModel model)

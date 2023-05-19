@@ -145,9 +145,34 @@ namespace ServiceCenter.Service.Implementations
             }
         }
 
-        public Task<IBaseResponce<Payment>> Remove(uint id)
+        public async Task<IBaseResponce<Payment>> Remove(uint id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var model = _paymentRepository.GetById(id).Result;
+                if (model == null)
+                {
+                    return new BaseResponse<Payment>()
+                    {
+                        Description = "Not found",
+                        StatusCode = StatusCode.OK
+                    };
+                }
+                await _paymentRepository.Delete(model);
+                return new BaseResponse<Payment>()
+                {
+                    Result = model,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Payment>()
+                {
+                    Description = $"[GetPayment] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
         }
 
         public Task<IBaseResponce<Payment>> Update(PaymentViewModel model)

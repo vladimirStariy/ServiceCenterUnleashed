@@ -143,9 +143,34 @@ namespace ServiceCenter.Service.Implementations
             }
         }
 
-        public Task<IBaseResponce<Material>> Remove(uint id)
+        public async Task<IBaseResponce<Material>> Remove(uint id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var model = _materialRepository.GetById(id).Result;
+                if (model == null)
+                {
+                    return new BaseResponse<Material>()
+                    {
+                        Description = "Not found",
+                        StatusCode = StatusCode.OK
+                    };
+                }
+                await _materialRepository.Delete(model);
+                return new BaseResponse<Material>()
+                {
+                    Result = model,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Material>()
+                {
+                    Description = $"[GetMaterial] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
         }
 
         public async Task<IBaseResponce<Material>> Update(MaterialViewModel model)

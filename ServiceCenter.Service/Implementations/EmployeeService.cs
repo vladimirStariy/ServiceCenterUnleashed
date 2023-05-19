@@ -144,9 +144,34 @@ namespace ServiceCenter.Service.Implementations
             }
         }
 
-        public Task<IBaseResponce<Employee>> Remove(uint id)
+        public async Task<IBaseResponce<Employee>> Remove(uint id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var employee = _employeeRepository.GetById(id).Result;
+                if (employee == null)
+                {
+                    return new BaseResponse<Employee>()
+                    {
+                        Description = "Not found",
+                        StatusCode = StatusCode.OK
+                    };
+                }
+                await _employeeRepository.Delete(employee);
+                return new BaseResponse<Employee>()
+                {
+                    Result = employee,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Employee>()
+                {
+                    Description = $"[GetEmployee] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
         }
 
         public async Task<IBaseResponce<Employee>> Update(EmployeeViewModel model)

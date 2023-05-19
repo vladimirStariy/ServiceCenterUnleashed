@@ -155,9 +155,34 @@ namespace ServiceCenter.Service.Implementations
             }
         }
 
-        public Task<IBaseResponce<Abonent>> Remove(uint id)
+        public async Task<IBaseResponce<Abonent>> Remove(uint id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var abonent = _abonentRepository.GetById(id).Result;
+                if (abonent == null)
+                {
+                    return new BaseResponse<Abonent>()
+                    {
+                        Description = "Not found",
+                        StatusCode = StatusCode.OK
+                    };
+                }
+                await _abonentRepository.Delete(abonent);
+                return new BaseResponse<Abonent>()
+                {
+                    Result = abonent,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Abonent>()
+                {
+                    Description = $"[GetAbonent] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
         }
 
         public async Task<IBaseResponce<Abonent>> Update(AbonentViewModel model)
