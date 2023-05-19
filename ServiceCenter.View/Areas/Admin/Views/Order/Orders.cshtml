@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.Order.OrderListViewModel>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order_close_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Abonent_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee_name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_close_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Abonent_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee_name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

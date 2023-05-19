@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.Payment.PaymentListViewModel>
+
+<p>
+    <a asp-controller="Payment" asp-action="CreatePayment">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Payment_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Payment_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Payment_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Abonent_name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @if(Model != null)
+    {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Payment_ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Payment_number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Payment_date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Abonent_name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+    }
+    </tbody>
+</table>

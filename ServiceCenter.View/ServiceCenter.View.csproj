@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Guest\Data\**" />
+    <Compile Remove="Areas\Guest\Models\**" />
+    <Content Remove="Areas\Guest\Data\**" />
+    <Content Remove="Areas\Guest\Models\**" />
+    <EmbeddedResource Remove="Areas\Guest\Data\**" />
+    <EmbeddedResource Remove="Areas\Guest\Models\**" />
+    <None Remove="Areas\Guest\Data\**" />
+    <None Remove="Areas\Guest\Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceCenter.Data\ServiceCenter.Data.csproj" />
+    <ProjectReference Include="..\ServiceCenter.Domain\ServiceCenter.Domain.csproj" />
+    <ProjectReference Include="..\ServiceCenter.Service\ServiceCenter.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Employer\Data\" />
+    <Folder Include="Areas\Employer\Models\" />
+    <Folder Include="Areas\Operator\Data\" />
+    <Folder Include="Areas\Operator\Models\" />
+  </ItemGroup>
+
+</Project>
