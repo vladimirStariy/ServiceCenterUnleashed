@@ -1,16 +1,11 @@
 ﻿@model ServiceCenter.Domain.Viewmodel.Material.MaterialViewModel
 
-<h4>MaterialViewModel</h4>
+<h4>Материал</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="CreateMaterial">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Material_ID" class="control-label"></label>
-                <input asp-for="Material_ID" class="form-control" />
-                <span asp-validation-for="Material_ID" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />

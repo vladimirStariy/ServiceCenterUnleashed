@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.Material.MaterialListViewModel>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-controller="Material" asp-action="CreateMaterial">Добавить</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Material_ID)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -28,9 +25,6 @@
         {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Material_ID)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
@@ -41,7 +35,6 @@
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
                     </td>
                 </tr>
