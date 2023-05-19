@@ -48,5 +48,14 @@ namespace ServiceCenter.View.Areas.Admin.Controllers
             }
             return View("Error", $"{response.Description}");
         }
+
+        [HttpGet]
+        public IActionResult UpdateAbonent(uint abonent_id)
+        {
+            var response = _tariffService.Get();
+            ViewBag.Tariff = new SelectList(response.Result, "Tariff_ID", "Name");
+            var response2 = _abonentService.GetById(abonent_id);
+            return View(response2.Result);
+        }
     }
 }
