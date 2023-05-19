@@ -1,8 +1,15 @@
 ﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.TariffType.TariffTypeListViewModel>
 
-<p>
-    <a asp-controller="Tariff" asp-action="CreateTariffType">Добавить</a>
-</p>
+<h1 class="h3 mb-2 text-gray-800">Виды тарифных планов</h1>
+
+<div class="my-2"></div>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <p>
+            <a class="btn btn-success" asp-controller="Tariff" asp-action="CreateTariffType">Добавить</a>
+        </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -29,3 +36,5 @@
 }
     </tbody>
 </table>
+    </div>
+</div>

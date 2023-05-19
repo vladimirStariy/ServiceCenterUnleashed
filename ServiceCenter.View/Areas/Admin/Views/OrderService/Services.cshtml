@@ -1,8 +1,14 @@
 ﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.OrderService.OrderServiceListViewModel>
+<h1 class="h3 mb-2 text-gray-800">Услуги</h1>
 
-<p>
-    <a asp-controller="OrderService" asp-action="CreateService">Добавить</a>
-</p>
+<div class="my-2"></div>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <p>
+            <a class="btn btn-success" asp-controller="OrderService" asp-action="CreateService">Добавить</a>
+        </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -36,3 +42,5 @@
 }
     </tbody>
 </table>
+    </div>
+</div>

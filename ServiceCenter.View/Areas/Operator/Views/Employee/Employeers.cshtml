@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.Employee.EmployeeListViewModel>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-
+<div class="card shadow mb-4">
+    <div class="card-body">
+<h1 class="h3 mb-2 text-gray-800">Сотрудники</h1>
+<div class="my-2"></div>
 <table class="table">
     <thead>
         <tr>
@@ -40,14 +40,12 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Phone)
                     </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                    </td>
+                   
                 </tr>
         }
         
 }
     </tbody>
 </table>
+    </div>
+</div>

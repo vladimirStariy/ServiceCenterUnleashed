@@ -1,5 +1,11 @@
 ﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.Tariff.TariffListViewModel>
 
+<div class="card shadow mb-4">
+    <div class="card-body">
+
+<h1 class="h3 mb-2 text-gray-800">Тарифные планы</h1>
+<div class="my-2"></div>
+
 <table class="table">
     <thead>
         <tr>
@@ -30,12 +36,14 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.TariffType)
                     </td>
-                    <td>
+                    @*<td>
                         @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
-                    </td>
+                    </td>*@
                 </tr>
         }
         
 }
     </tbody>
 </table>
+    </div>
+</div>

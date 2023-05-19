@@ -1,5 +1,11 @@
 ﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.OrderService.OrderServiceListViewModel>
 
+<div class="card shadow mb-4">
+    <div class="card-body">
+
+<h1 class="h3 mb-2 text-gray-800">Услуги</h1>
+<div class="my-2"></div>
+
 <table class="table">
     <thead>
         <tr>
@@ -24,11 +30,13 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Price)
                     </td>
-                    <td>
+                    @*<td>
                         @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    </td>
+                    </td>*@
                 </tr>
         }
 }
     </tbody>
 </table>
+    </div>
+</div>

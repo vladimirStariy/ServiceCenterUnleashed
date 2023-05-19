@@ -1,7 +1,13 @@
 ﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.Employee.EmployeeListViewModel>
 
+<h1 class="h3 mb-2 text-gray-800">Сотрудники</h1>
+
+<div class="my-2"></div>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
 <p>
-    <a asp-controller="Employee" asp-action="CreateEmployee">Добавить</a>
+    <a class="btn btn-success" asp-controller="Employee" asp-action="CreateEmployee">Добавить</a>
 </p>
 <table class="table">
     <thead>
@@ -41,3 +47,5 @@
 }
     </tbody>
 </table>
+    </div>
+</div>

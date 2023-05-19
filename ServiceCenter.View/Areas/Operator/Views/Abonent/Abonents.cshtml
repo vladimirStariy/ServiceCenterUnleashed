@@ -1,7 +1,12 @@
 ﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.Abonent.AbonentListViewModel>
+<h1 class="h3 mb-2 text-gray-800">Абоненты</h1>
 
+<div class="my-2"></div>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-success" asp-action="Create">Добавить</a>
 </p>
 
 <table class="table">
@@ -74,3 +79,5 @@
 }
     </tbody>
 </table>
+    </div>
+</div>
