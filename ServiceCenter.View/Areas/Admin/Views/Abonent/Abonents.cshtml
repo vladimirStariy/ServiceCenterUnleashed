@@ -34,8 +34,9 @@
         </tr>
     </thead>
     <tbody>
-
-    @foreach (var item in Model) {
+    @if(Model != null)
+        {
+            @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Abonent_ID)
@@ -67,6 +68,8 @@
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
+        }
+        
     }
     </tbody>
 </table>
