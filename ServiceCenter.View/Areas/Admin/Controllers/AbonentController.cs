@@ -8,7 +8,6 @@ using ServiceCenter.Service.Interfaces;
 namespace ServiceCenter.View.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "0")]
     public class AbonentController : Controller
     {
         private readonly IAbonentService _abonentService;

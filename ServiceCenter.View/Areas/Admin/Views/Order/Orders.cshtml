@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.Order.OrderListViewModel>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-controller="Order" asp-action="CreateOrder">Добавить</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Order_ID)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
@@ -30,33 +28,31 @@
     <tbody>
         @if(Model != null)
         {
-            @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Order_ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Order_date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Order_close_date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Abonent_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee_name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
+            @foreach (var item in Model) 
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Order_date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Order_close_date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Abonent_name)
+                        @Html.ActionLink("Детали", "Details", new { id=item.Abonent_Id })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Employee_name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.Order_ID  }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.Order_ID })
+                    </td>
+                </tr>
+            }
         }
-}
     </tbody>
 </table>

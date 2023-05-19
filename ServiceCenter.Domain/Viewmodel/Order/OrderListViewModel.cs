@@ -20,6 +20,7 @@ namespace ServiceCenter.Domain.Viewmodel.Order
         public DateTime Order_close_date { get; set; }
         [Display(Name = "Абонент")]
         public string Abonent_name { get; set; }
+        public uint Abonent_Id { get; set; }
         [Display(Name = "Ответственный")]
         public string Employee_name { get; set; }
     }
