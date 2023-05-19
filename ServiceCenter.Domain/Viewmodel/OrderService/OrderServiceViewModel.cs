@@ -11,11 +11,11 @@ namespace ServiceCenter.Domain.Viewmodel.OrderService
     {
         [Display(Name= "OrderService_ID")]
         public uint OrderService_ID { get; set; }
-        [Display(Name = "Name")]
+        [Display(Name = "Наименование")]
         public string Name { get; set; }
-        [Display(Name = "Price")]
+        [Display(Name = "Цена")]
         public double Price { get; set; }
-        [Display(Name = "Description")]
+        [Display(Name = "Описание")]
         public string Description { get; set; }
     }
 }
