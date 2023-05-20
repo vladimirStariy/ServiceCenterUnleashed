@@ -39,8 +39,8 @@
                 @Html.DisplayFor(modelItem => item.Phone)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Изменить", "UpdateEmployee", new { id=item.Employee_ID }) |
+                @Html.ActionLink("Удалить", "DeleteEmployee", new { id=item.Employee_ID })
             </td>
         </tr>
     } 

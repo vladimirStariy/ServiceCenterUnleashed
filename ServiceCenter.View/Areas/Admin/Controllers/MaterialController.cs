@@ -40,5 +40,27 @@ namespace ServiceCenter.View.Areas.Admin.Controllers
             }
             return View("Error", $"{response.Description}");
         }
+
+        [HttpGet]
+        public IActionResult UpdateMaterial(uint id)
+        {
+            var response = _materialService.GetById(id);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View(response.Result);
+            }
+            return View("Error", $"{response.Description}");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateMaterial(MaterialViewModel model)
+        {
+            var response = await _materialService.Update(model);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return RedirectToAction("Materials", "Material");
+            }
+            return View("Error", $"{response.Description}");
+        }
     }
 }

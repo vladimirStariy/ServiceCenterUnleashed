@@ -78,5 +78,52 @@ namespace ServiceCenter.View.Areas.Admin.Controllers
             }
             return View("Error", $"{response.Description}");
         }
+
+        [HttpGet]
+        public IActionResult UpdateTariffType(uint id)
+        {
+            var response = _tariffTypeService.GetById(id);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View(response.Result);
+            }
+            return View("Error", $"{response.Description}");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateTariffType(TariffTypeViewModel model)
+        {
+            var response = await _tariffTypeService.Update(model);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return RedirectToAction("TariffTypes", "Tariff");
+            }
+            return View("Error", $"{response.Description}");
+        }
+
+        [HttpGet]
+        public IActionResult UpdateTariff(uint id)
+        {
+            var res = _tariffTypeService.Get();
+            ViewBag.TariffTypes = new SelectList(res.Result, "TariffType_ID", "Name");
+            var response = _tariffService.GetById(id);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View(response.Result);
+            }
+            return View("Error", $"{response.Description}");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateTariff(TariffViewModel model)
+        {
+            
+            var response = await _tariffService.Update(model);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return RedirectToAction("Tariffs", "Tariff");
+            }
+            return View("Error", $"{response.Description}");
+        }
     }
 }

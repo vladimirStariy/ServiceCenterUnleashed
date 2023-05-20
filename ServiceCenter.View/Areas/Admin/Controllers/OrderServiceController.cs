@@ -40,5 +40,27 @@ namespace ServiceCenter.View.Areas.Admin.Controllers
             }
             return View("Error", $"{response.Description}");
         }
+
+        [HttpGet]
+        public IActionResult UpdateOrderService(uint id)
+        {
+            var response = _serviceService.GetById(id);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View(response.Result);
+            }
+            return View("Error", $"{response.Description}");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateOrderService(OrderServiceViewModel model)
+        {
+            var response = await _serviceService.Update(model);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return RedirectToAction("Services", "OrderService");
+            }
+            return View("Error", $"{response.Description}");
+        }
     }
 }

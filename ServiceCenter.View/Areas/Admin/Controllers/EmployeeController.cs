@@ -49,5 +49,36 @@ namespace ServiceCenter.View.Areas.Admin.Controllers
             }
             return View("Error", $"{response.Description}");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateEmployee(uint id)
+        {
+            var response = _userService.Get();
+            ViewBag.Users = new SelectList(response.Result, "User_ID", "Username");
+            var response2 = _employeeService.GetById(id);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View(response2.Result);
+            }
+            return View("Error", $"{response.Description}");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateEmployee(EmployeeViewModel model)
+        {
+            var response = await _employeeService.Update(model);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return RedirectToAction("Employeers", "Employee");
+            }
+            return View("Error", $"{response.Description}");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteEmployee(uint id)
+        {
+            await _employeeService.Remove(id);
+            return RedirectToAction("Employeers");
+        }
     }
 }
