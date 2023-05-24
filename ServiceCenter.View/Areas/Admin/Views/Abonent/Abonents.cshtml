@@ -63,8 +63,8 @@
                 @Html.DisplayFor(modelItem => item.Tariff)
             </td>
             <td>
-                @Html.ActionLink("Edit", "UpdateAbonent", new { id=item.Abonent_ID }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a class="btn btn-info" asp-action="UpdateAbonent" asp-controller="Abonent" asp-route-id="@item.Abonent_ID">Изменить</a>
+                <a class="btn btn-danger" asp-action="DeleteAbonent" asp-controller="Abonent" asp-route-id="@item.Abonent_ID">Удалить</a>
             </td>
         </tr>
         }

@@ -50,12 +50,23 @@ namespace ServiceCenter.View.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult UpdateAbonent(uint abonent_id)
+        public IActionResult UpdateAbonent(AbonentViewModel model)
         {
             var response = _tariffService.Get();
             ViewBag.Tariff = new SelectList(response.Result, "Tariff_ID", "Name");
-            var response2 = _abonentService.GetById(abonent_id);
+            var response2 = _abonentService.GetById(model.Abonent_ID);
             return View(response2.Result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteAbonent(uint Abonent_ID)
+        {
+            var response = await _abonentService.Remove(Abonent_ID);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return RedirectToAction("Abonents", "Abonent");
+            }
+            return View("Error", $"{response.Description}");
         }
     }
 }
